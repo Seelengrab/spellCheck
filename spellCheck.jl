@@ -64,10 +64,10 @@ end
 function edits1(word)
     letters    = "abcdefghijklmnopqrstuvxyz"
     splits     = [ ("", word) ] ∪ [ (word[1:i],word[i+1:end]) for i in 1:length(word) ]
-    deletes    = [ length(R) > 0 ? "$L$(R[2:end])" : "" for (L, R) in splits ]
-    transposes = [ length(R) > 1 ? "$L$(R[2])$(R[1])$(R[3:end])" : "" for (L, R) in splits ]
-    replaces   = [ length(R) > 0 ? "$L$c$(R[2:end])" : "" for (L, R) in splits for c in letters ]
-    inserts    = [ "$L$c$R" for (L, R) in splits for c in letters ]
+    deletes    = [ "$L$(R[2:end])"                            for (L, R) in splits if R != "" ]
+    transposes = [ "$L$(R[2])$(R[1])$(R[3:end])"              for (L, R) in splits if length(R) >  1]
+    replaces   = [ "$L$c$(R[2:end])"                          for (L, R) in splits if R != "" for c in letters ]
+    inserts    = [ "$L$c$R"                                   for (L, R) in splits for c in letters ]
     filter(x -> x != "", deletes ∪ transposes ∪ replaces ∪ inserts)
 end
 

@@ -65,7 +65,7 @@ function spelltest(tests, verbose=false)
         if w != right
             unknown += !(right in keys(WORDS))
             if verbose
-                println("correction($wrong) => $(w) ($(WORDS[w])); expected $(right) ($(WORDS[right]))")
+                println("correction($wrong) => $w ($(WORDS[w])); expected $right ($(WORDS[right]))")
             end
         end
     end
