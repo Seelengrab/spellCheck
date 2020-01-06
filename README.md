@@ -12,3 +12,21 @@ Running spell-testset2.txt
 67.2% of 400 correct (10.8% unknown) at 43.9 words per second        
   9.109207 seconds (93.48 M allocations: 6.078 GiB, 3.25% gc time)  
 ```
+
+And this is the machine this is run on:
+
+```
+julia> versioninfo()
+Julia Version 1.3.0
+Commit 46ce4d7933* (2019-11-26 06:09 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Core(TM) i7-6600U CPU @ 2.60GHz
+  WORD_SIZE: 64    
+  LIBM: libopenlibm
+  LLVM: libLLVM-6.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_NUM_THREADS = 4
+```
+
+That being said, there's still a bunch of time left on the table somewhere. I'm sure there's a way to reduce those allocations and get the speed up higher.
