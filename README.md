@@ -1,3 +1,5 @@
+# The Timings
+
 A julia implementation of the spellchecker introduced by norvig, [here](https://norvig.com/spell-correct.html). 
 
 I've coded this up years ago, but couldn't get the exact numbers correct (I count one 'the' too many, among other things) and thus never bothered testing the speed. That is, until dunefox on the julialang discourse made me remember and check my solution.
@@ -30,3 +32,7 @@ Environment:
 ```
 
 That being said, there's still a bunch of time left on the table somewhere. I'm sure there's a way to reduce those allocations and get the speed up higher.
+
+# What can be lerned from this?
+
+Not much, except that a (almost) one to one translation from norvig's original version is algorithmically only okayish. If we wouldn't recreate all those intermediaries, we'd be in a much better place. This is basically a direct translation of the original python code, so there's no magic speedup to be found here. Since `edits1` and `edits2` recreate everything from scratch every time they're called, the run time is just `O(big)`. If you want to see a fast version in action, check [this one](https://github.com/Arkoniak/NorvigsTrieSpellchecker.jl) out. It's very different algorithmically and is absolutely not what norvig originally intended with his challenge to himself, but it's an interesting case study nonetheless.
